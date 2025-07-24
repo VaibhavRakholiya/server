@@ -6,7 +6,7 @@
   <script>
     window.onload = async function () {
       try {
-        const response = await fetch("redirect-url.txt");
+        const response = await fetch("redirect.txt");
         const url = (await response.text()).trim();
 
         if (url.startsWith("http")) {
