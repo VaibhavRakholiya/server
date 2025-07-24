@@ -9,7 +9,7 @@
         const response = await fetch("redirect.txt");
         const url = (await response.text()).trim();
 
-        if (url.startsWith("http")) {
+        if (url.startsWith("http") || url.startsWith("https")) {
           window.location.href = url;
         } else {
           document.body.innerHTML = "<p>Invalid redirect URL.</p>";
