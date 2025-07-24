@@ -1,11 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="refresh" content="0; url=https://example.com">
+  <meta charset="UTF-8" />
   <title>Redirecting...</title>
+  <script>
+    window.onload = async function () {
+      try {
+        const response = await fetch("redirect.json");
+        const data = await response.json();
+        const url = data.url;
+
+        if (url && url.startsWith("http")) {
+          window.location.href = url;
+        } else {
+          document.body.innerHTML = "<p>Invalid redirect URL.</p>";
+        }
+      } catch (error) {
+        document.body.innerHTML = "<p>Failed to load redirect URL.</p>";
+        console.error(error);
+      }
+    };
+  </script>
 </head>
 <body>
-  <p>If you are not redirected, <a href="https://example.com">click here</a>.</p>
+  <p>Redirecting...</p>
 </body>
 </html>
